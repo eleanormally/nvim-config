@@ -18,17 +18,16 @@ return {
   {
     'numToStr/Navigator.nvim',
     config = function()
-      require('Navigator').setup()
+      require('Navigator').setup({})
     end
   },
-  { 'tpope/vim-surround' },
   {
     'windwp/nvim-ts-autotag',
     config = function()
       require('nvim-ts-autotag').setup({})
     end
   },
-  { 'windwp/nvim-autopairs',      event = 'InsertEnter', opts = {} },
+  -- { 'windwp/nvim-autopairs',      event = 'InsertEnter', opts = {} },
   { 'yorickpeterse/nvim-window' },
   { 'nvim-tree/nvim-web-devicons' },
   {
@@ -41,16 +40,16 @@ return {
   },
   { 'RRethy/nvim-treesitter-endwise' },
   -- { 'jparise/vim-graphql' },
-  {
-    'zbirenbaum/copilot.lua',
-    config = function()
-      require('copilot').setup({
-        suggestion = {
-          auto_trigger = false
-        }
-      })
-    end
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   config = function()
+  --     require('copilot').setup({
+  --       suggestion = {
+  --         auto_trigger = false
+  --       }
+  --     })
+  --   end
+  -- },
   {
     'kazhala/close-buffers.nvim',
     config = function()
