@@ -1,7 +1,4 @@
 vim.o.guifont = "ComicShannsMono Nerd Font Mono:h14"
-vim.g.neovide_remember_window_size = true
-vim.g.neovide_confirm_quit = 1
-vim.g.neovide_hide_mouse_when_typing = true
 vim.g.mapleader = " "
 
 -- sync clipboard to system
