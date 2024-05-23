@@ -12,6 +12,7 @@ local navigator = require('Navigator')
 nmap('<leader>vm', '<cmd>e ~/.config/nvim/lua/config/mapping.lua<cr>')
 nmap('<leader>vs', '<cmd>e ~/.config/nvim/lua/config/settings.lua<cr>')
 nmap('<leader>vv', '<cmd>e ~/.config/nvim/lua/config/visuals.lua<cr>')
+nmap('<leader>vl', '<cmd>e ~/.config/nvim/lua/config/lsp.lua<cr>')
 
 
 ------ file navigation
@@ -35,6 +36,7 @@ end)
 nmap('<leader>ss', '<cmd>e ~/scratchpad<cr>')
 ---- harpoon
 local harpoon = require("harpoon")
+harpoon:setup()
 -- add current file to harpoon
 nmap('<leader>hh', function()
   harpoon:list():append()
@@ -125,6 +127,16 @@ map('v', '<S-up>', ":m '<-2<CR>gv=gv")
 -- j and k pop and push newlines
 map('n', 'j', 'mzJ`z')
 map('n', 'k', 'i<cr><Esc>zz')
+-- remove highlight on espace
+map('n', '<Esc>', "<cmd>nohlsearch<CR>")
+-- highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 
 
@@ -140,9 +152,7 @@ nmap('<leader>fw', telescope.live_grep)
 ------ lsp/code info
 -- code actions. if no code actions exist in current word then do full line, then do full file
 map({ 'n', 'v' }, '<leader>la', function()
-  vim.lsp.buf.code_action({
-    apply = true
-  })
+  vim.cmd('Lspsaga code_action')
 end)
 -- go to definition
 nmap('gd', vim.lsp.buf.definition)
@@ -157,6 +167,8 @@ nmap('<leader>sd', function()
   navigator.right()
   vim.cmd(':normal gd')
 end)
+nmap('gr', require('telescope.builtin').lsp_references)
+nmap('gd', require('telescope.builtin').lsp_definitions)
 
 
 

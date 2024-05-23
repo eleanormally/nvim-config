@@ -18,16 +18,16 @@ require('mason-lspconfig').setup({
   }
 })
 
--- old settings for better lua autocomplete vim plugins
--- lsp_zero.use('lua_ls', {
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = { 'vim' },
---       }
---     }
---   }
--- })
+-- better lua autocomplete vim plugins
+lsp_zero.use('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      }
+    }
+  }
+})
 
 -- disable formatter for html
 local lspconfig = require("lspconfig")
@@ -38,13 +38,14 @@ lspconfig.html.setup({
   }
 })
 
--- lspconfig.htmx.setup({
---   filetypes = { "templ", "react", "typescript", "javascript" }
--- })
--- -- lspconfig.tailwincss.setup({
--- --   filetypes = { "templ", "javascript", "typescript", "react" },
--- --   init_options = { userLanguages = { templ = "html" } },
--- -- })
+lspconfig.htmx.setup({
+  filetypes = { "templ", "react", "typescript", "javascript", "html" }
+})
+
+lspconfig.tailwindcss.setup({
+  filetypes = { "templ", "javascript", "typescript", "react" },
+  init_options = { userLanguages = { templ = "html" } },
+})
 
 
 -- setup autocomplete

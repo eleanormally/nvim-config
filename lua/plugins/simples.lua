@@ -27,7 +27,7 @@ return {
       require('nvim-ts-autotag').setup({})
     end
   },
-  -- { 'windwp/nvim-autopairs',      event = 'InsertEnter', opts = {} },
+  { 'windwp/nvim-autopairs',      event = 'InsertEnter', opts = {} },
   { 'yorickpeterse/nvim-window' },
   { 'nvim-tree/nvim-web-devicons' },
   {
@@ -58,4 +58,14 @@ return {
       })
     end
   },
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup({})
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
+    }
+  }
 }
