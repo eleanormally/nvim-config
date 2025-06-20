@@ -26,20 +26,10 @@ return {
       }
     })
     require('mini.surround').setup()
-    require('mini.comment').setup({
-      mappings = {
-        comment_line = '<leader>/',
-        comment_visual = '<leader>/',
-        textobject = 'gc',
-      },
-      options = {
-        ignore_blank_lines = true,
-      }
-    })
     require('mini.ai').setup()
     require("mini.splitjoin").setup({
       mappings = {
-        toggle = 'gS',
+        toggle = 'gs',
         split = '',
         join = '',
       }

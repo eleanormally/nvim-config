@@ -7,11 +7,11 @@ vim.opt.relativenumber = true
 vim.opt.wrap = false
 -- allow for smooth side scrolling
 vim.opt.sidescroll = 1
--- center cursor horizontally
-vim.opt.sidescrolloff = 10000
+-- add padding for reading long lines
+vim.opt.sidescrolloff = 20
 -- disable highlighting search
 -- vim.cmd({ cmd = 'set', args = { 'nohlsearch' } })
---
+-- line length column configuration
 -- highlight match while typing
 vim.opt.incsearch = true
 -- ensure coloring
@@ -31,6 +31,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- autoindent for c (disabled because treesitter should cover this)
 -- vim.opt.smartindent = true
+vim.cmd('let &colorcolumn=join(range(81,999),",")')
 
 
 ------ editor functionality

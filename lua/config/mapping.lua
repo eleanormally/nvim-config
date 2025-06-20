@@ -10,6 +10,7 @@ local navigator = require('Navigator')
 
 ------ quicklook vim files
 nmap('<leader>vm', '<cmd>e ~/.config/nvim/lua/config/mapping.lua<cr>')
+nmap('<leader>vp', '<cmd>e ~/.config/nvim/lua/plugins/simples.lua<cr>')
 nmap('<leader>vs', '<cmd>e ~/.config/nvim/lua/config/settings.lua<cr>')
 nmap('<leader>vv', '<cmd>e ~/.config/nvim/lua/config/visuals.lua<cr>')
 nmap('<leader>vl', '<cmd>e ~/.config/nvim/lua/config/lsp.lua<cr>')
@@ -115,6 +116,10 @@ map('t', '<Esc>', '<C-\\><C-n>')
 -- make ' jump horizontally not just vertically
 nmap('\'', '`')
 
+-- jump between tabs
+nmap(']t', '<cmd>tabnext<cr>')
+nmap('[t', '<cmd>tabprev<cr>')
+
 
 ------ text manipulation
 -- whole file copy
@@ -137,6 +142,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+--comment
+nmap('<leader>/', "gcc")
+map('v', '<leader>/', "gc")
 
 
 
@@ -162,9 +170,15 @@ map({ 'n', 'v' }, '<leader>ld', vim.diagnostic.open_float)
 nmap('<leader>lt', vim.lsp.buf.hover)
 -- list document symbols
 nmap('<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>')
+nmap('<leader>lr', '<cmd>Lspsaga rename<cr>')
 nmap('<leader>sd', function()
   vim.cmd('vsplit')
   navigator.right()
+  vim.cmd(':normal gd')
+end)
+nmap('<leader>sD', function()
+  vim.cmd('split')
+  navigator.down()
   vim.cmd(':normal gd')
 end)
 nmap('gr', require('telescope.builtin').lsp_references)

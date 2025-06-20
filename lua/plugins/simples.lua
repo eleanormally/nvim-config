@@ -39,17 +39,6 @@ return {
     end
   },
   { 'RRethy/nvim-treesitter-endwise' },
-  -- { 'jparise/vim-graphql' },
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   config = function()
-  --     require('copilot').setup({
-  --       suggestion = {
-  --         auto_trigger = false
-  --       }
-  --     })
-  --   end
-  -- },
   {
     'kazhala/close-buffers.nvim',
     config = function()
@@ -67,5 +56,5 @@ return {
       'nvim-treesitter/nvim-treesitter', -- optional
       'nvim-tree/nvim-web-devicons',     -- optional
     }
-  }
+  },
 }

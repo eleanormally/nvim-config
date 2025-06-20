@@ -1,1 +1,2 @@
-vim.cmd('colorscheme rose-pine')
+vim.cmd("let g:everforest_background='soft'")
+vim.cmd('colorscheme everforest')

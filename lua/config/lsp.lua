@@ -8,6 +8,15 @@ lsp_zero.on_attach(function(client, buffnr)
   lsp_zero.buffer_autoformat()
 end)
 
+for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+  local default_diagnostic_handler = vim.lsp.handlers[method]
+  vim.lsp.handlers[method] = function(err, result, context, config)
+    if err ~= nil and err.code == -32802 then
+      return
+    end
+    return default_diagnostic_handler(err, result, context, config)
+  end
+end
 
 -- setup mason
 require('mason').setup({})
@@ -47,11 +56,19 @@ lspconfig.tailwindcss.setup({
   init_options = { userLanguages = { templ = "html" } },
 })
 
+lspconfig.sourcekit.setup({
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
+  },
+})
 
 -- setup autocomplete
 
 local cmp = require('cmp')
-local cmp_format = require('lsp-zero').cmp_format({ details = true })
 
 cmp.setup({
   preselect = 'item',
